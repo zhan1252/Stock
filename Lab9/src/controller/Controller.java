@@ -12,6 +12,7 @@ import model.IStockModel;
 import view.IView;
 import view.View;
 
+
 public class Controller implements IController {
   int width = 500;
   int height = 500;
@@ -30,14 +31,22 @@ public class Controller implements IController {
 
     //need to run data through convert stock scale
     List<Pair<Double, Double>> listStockPrice = new ArrayList<>();
+    List<Pair<Double,Double>> buyOpportunity = new ArrayList<>();
 
     for (int i = 0; i < data.size(); ++i) {
       double dateScale = convertScaleDate(data.get(i).getKey(), view);
      // System.out.println(dateScale);
       double stockScale = convertStockScale(data.get(i).getValue(), model, view);
       listStockPrice.add(new Pair<>(dateScale, stockScale));
+
+      if(model.buyOpportunity(symbol,data.get(i).getKey())) {
+        buyOpportunity.add(new Pair<>(dateScale,stockScale));
+      }
     }
 
+
+
+    view.setBuyOpportunity(buyOpportunity);
     view.setData(listStockPrice);
     view.render();
 
@@ -48,6 +57,8 @@ public class Controller implements IController {
     double minPrice = model.minPrice(view.getSymbol(), view.getStartDate(), view.getEndDate());
     double maxPrice = model.maxPrice(view.getSymbol(), view.getStartDate(), view.getEndDate());
 
+    view.setMinPrice(minPrice);
+    view.setMaxPrice(maxPrice);
     return (((i - (minPrice)) / ((maxPrice) - (minPrice)) * (height-50))) + 50;
   }
 

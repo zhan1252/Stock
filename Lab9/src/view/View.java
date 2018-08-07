@@ -17,7 +17,10 @@ public class View extends JFrame implements IView {
   TickerSymbol tickerSymbol;
   Date startDate;
   Date endDate;
+  double minPrice;
+  double maxPrice;
   List<Pair<Double, Double>> data;
+  List<Pair<Double, Double>> buyOpportunity;
 
 
   public View(TickerSymbol symbol, Date startDate, Date endDate)
@@ -26,6 +29,7 @@ public class View extends JFrame implements IView {
     this.tickerSymbol = symbol;
     this.startDate = startDate;
     this.endDate = endDate;
+
 /*
     MyDrawingPanel drawingPanel = new MyDrawingPanel();
     drawingPanel.setData(this.data);
@@ -38,6 +42,10 @@ public class View extends JFrame implements IView {
 
   }
 
+  @Override
+  public void setBuyOpportunity(List<Pair<Double, Double>> data) {
+    this.buyOpportunity = data;
+  }
 
   @Override
   public void setData(List<Pair<Double, Double>> data) {
@@ -59,6 +67,15 @@ public class View extends JFrame implements IView {
     return this.endDate;
   }
 
+  @Override
+  public void setMinPrice(double minPrice) {
+    this.minPrice = minPrice;
+  }
+
+  @Override
+  public void setMaxPrice(double maxPrice) {
+    this.maxPrice = maxPrice;
+  }
 
   @Override
   public void render() {
@@ -70,9 +87,13 @@ public class View extends JFrame implements IView {
     frame.setSize(new Dimension(width,height));
 
     MyDrawingPanel drawingPanel = new MyDrawingPanel();
-    drawingPanel.setData(this.data);
+    drawingPanel.setData(this.data,this.startDate,this.endDate, this.minPrice,this.maxPrice
+    ,this.buyOpportunity);
 
-    frame.add(drawingPanel);
+    JScrollPane jScrollPane = new JScrollPane(drawingPanel);
+
+    //frame.add(drawingPanel);
+    frame.add(jScrollPane);
     frame.setVisible(true);
 
 

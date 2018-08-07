@@ -17,4 +17,10 @@ public interface IView {
   Date getStartDate();
 
   Date getEndDate();
+
+  void setMinPrice(double minPrice);
+
+  void setMaxPrice(double maxPrice);
+
+  void setBuyOpportunity(List<Pair<Double,Double>> data);
 }
