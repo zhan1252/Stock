@@ -101,8 +101,8 @@ public class MyDrawingPanel extends JPanel {
 
     g2.drawString(minDate.toString(), 10, 520);
     g2.drawString(maxDate.toString(), 490, 520);
-    g2.drawString(""+(int)minStock, 5, 500);
-    g2.drawString(""+(int)maxStock, 5, 10);
+    g2.drawString("$" + (int)minStock, 5, 500);
+    g2.drawString("$" + (int)maxStock, 5, 10);
     g2.fillOval(340,12,7,7);
     g2.drawString(" indicates Buying Opportunity",350,20);
 
