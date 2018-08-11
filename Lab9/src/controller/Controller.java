@@ -24,7 +24,7 @@ public class Controller implements IController {
    * Empty constructor.
    */
   public Controller() {
-
+      //empty because assignments are in method below.
   }
 
   /**
@@ -99,7 +99,8 @@ public class Controller implements IController {
       ++dateNumber;
       tempStart.add(Calendar.DATE, 1);
     }
-    while (tempStart2.getTime().before(view.getEndDate()) || tempStart2.getTime().equals(view.getEndDate())) {
+    while (tempStart2.getTime().before(view.getEndDate()) ||
+            tempStart2.getTime().equals(view.getEndDate())) {
       ++maxDate;
       tempStart2.add(Calendar.DATE, 1);
     }

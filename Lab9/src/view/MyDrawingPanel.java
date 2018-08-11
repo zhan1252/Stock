@@ -1,11 +1,17 @@
 package view;
 
-import java.awt.*;
+import java.awt.Stroke;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.BasicStroke;
+
 import java.awt.geom.Line2D;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.*;
+
+import javax.swing.JPanel;
 
 import javafx.util.Pair;
 
@@ -97,7 +103,8 @@ public class MyDrawingPanel extends JPanel {
         yEnd = y2;
       }
 
-      Line2D lin = new Line2D.Double(x1 + 50, y1, x2 + 50, y2); //shift right by 50 to make room for axis
+      Line2D lin = new Line2D.Double(x1 + 50, y1,
+              x2 + 50, y2); //shift right by 50 to make room for axis
       g2.draw(lin);
 
     }
@@ -114,7 +121,8 @@ public class MyDrawingPanel extends JPanel {
     g2.fillOval(340, 12, 7, 7);
     g2.drawString(" indicates Buying Opportunity", 350, 20);
 
-    Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0,
+    Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT,
+            BasicStroke.JOIN_BEVEL, 0,
             new float[]{9}, 0);
     g2.setStroke(dashed);
     g2.drawLine((int) xStart, (int) yStart, (int) xEnd, (int) yEnd);

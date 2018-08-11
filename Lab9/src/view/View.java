@@ -1,6 +1,8 @@
 package view;
 
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.Date;
 import java.util.List;
 

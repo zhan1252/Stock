@@ -166,7 +166,7 @@ public class IStockModelImpl implements IStockModel {
       try {
         temp = this.priceOfDay(symbol, tempStart.getTime());
       } catch (Exception e) {
-
+      // empty because we don't need it to do anything
       }
       if (temp > maxPrice) {
         maxPrice = temp;
@@ -196,7 +196,7 @@ public class IStockModelImpl implements IStockModel {
       try {
         temp = this.priceOfDay(symbol, tempStart.getTime());
       } catch (Exception e) {
-
+      //empty because we don't need it to do anything.
       }
       if (temp < minPrice) {
         minPrice = temp;
