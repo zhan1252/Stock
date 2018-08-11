@@ -1,12 +1,7 @@
-import java.awt.*;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
-import javax.swing.*;
 
 import basket.IBasket;
 import basket.IBasketImpl;
@@ -16,11 +11,15 @@ import history.TickerSymbol;
 import model.IStockModel;
 import model.IStockModelImpl;
 import view.IView;
-import view.MyDrawingPanel;
 import view.View;
 
 public class Main {
 
+  /**
+   * Create model, view and controller and pass control to controller.
+   *
+   * @param args given input.
+   */
   public static void main(String[] args) {
 
     Date date1 = parseDate("2018-05-09");
@@ -28,16 +27,9 @@ public class Main {
     IBasket basket = new IBasketImpl();
     IStockModel model = new IStockModelImpl(basket);
 
-
-
-    //this is wrong- figure out how to get ticketSymbol and dates in
-    IView view = new View(TickerSymbol.MSFT,date1, date2);
+    IView view = new View(TickerSymbol.MSFT, date1, date2);
     IController controller = new Controller();
-    controller.start(model,view);
-    //controller.start(model,date1,date2);
-
-
-
+    controller.start(model, view);
 
   }
 

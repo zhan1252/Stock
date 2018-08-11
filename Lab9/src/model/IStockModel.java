@@ -3,7 +3,6 @@ package model;
 import java.util.Date;
 import java.util.List;
 
-import history.IHistory;
 import history.TickerSymbol;
 import javafx.util.Pair;
 
@@ -60,6 +59,7 @@ public interface IStockModel {
 
   /**
    * Determines the total price of a basket on a given date.
+   *
    * @param date given date
    * @throws IllegalArgumentException if ticker symbol is not in the database
    * @throws IllegalArgumentException if date is not a valid business day
@@ -70,6 +70,7 @@ public interface IStockModel {
   /**
    * Returns true if the price of a stock on the end date is higher than the price of a stock
    * on the start date.
+   *
    * @param tickerSymbol ticker symbol of the history to be found
    * @param startDate    given start date
    * @param endDate      given end date
@@ -83,6 +84,7 @@ public interface IStockModel {
   /**
    * Returns true if the price of a basket on a start date is lower than the price of the basket
    * on an end date.
+   *
    * @param startDate given start date
    * @param endDate   given end date
    * @throws IllegalArgumentException if either date is not a valid business day
@@ -109,10 +111,25 @@ public interface IStockModel {
     return result;
   }
 
+  /**
+   * Return the max price of a symbol.
+   *
+   * @param symbol    given symbol.
+   * @param startDate given start date.
+   * @param endDate   given end date.
+   * @return maximum price in date range.
+   */
   double maxPrice(TickerSymbol symbol, Date startDate, Date endDate);
 
+  /**
+   * Return the minimum price of a symbol.
+   *
+   * @param symbol    given symbol.
+   * @param startDate given start date.
+   * @param endDate   given end date.
+   * @return minimum price in date range.
+   */
   double minPrice(TickerSymbol symbol, Date startDate, Date endDate);
-
 
 
 }

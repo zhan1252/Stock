@@ -48,7 +48,6 @@ public class StockApplication {
             + tickerSymbol + "&outputsize=full&apikey=5FXWZ6AFS647GIUC&datatype=csv";
 
 
-
     url = new URL(temp1);
 
 

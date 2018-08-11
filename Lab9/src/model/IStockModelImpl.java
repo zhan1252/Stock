@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -147,7 +146,14 @@ public class IStockModelImpl implements IStockModel {
     }
   }
 
-
+  /**
+   * Returns maximum price of symbol in date range.
+   *
+   * @param symbol    given symbol.
+   * @param startDate given start date.
+   * @param endDate   given end date.
+   * @return maximum price.
+   */
   @Override
   public double maxPrice(TickerSymbol symbol, Date startDate, Date endDate) {
 
@@ -157,12 +163,12 @@ public class IStockModelImpl implements IStockModel {
     double temp = 0;
 
     while (tempStart.getTime().before(endDate) || tempStart.getTime().equals(endDate)) {
-     try{
-       temp = this.priceOfDay(symbol,tempStart.getTime());
-     } catch (Exception e) {
+      try {
+        temp = this.priceOfDay(symbol, tempStart.getTime());
+      } catch (Exception e) {
 
-     }
-      if(temp>maxPrice) {
+      }
+      if (temp > maxPrice) {
         maxPrice = temp;
       }
       tempStart.add(Calendar.DATE, 1);
@@ -171,29 +177,34 @@ public class IStockModelImpl implements IStockModel {
   }
 
 
-
+  /**
+   * Returns minimum price of symbol in range.
+   *
+   * @param symbol    given symbol.
+   * @param startDate given start date.
+   * @param endDate   given end date.
+   * @return minimum price.
+   */
   @Override
   public double minPrice(TickerSymbol symbol, Date startDate, Date endDate) {
-    double minPrice = this.priceOfDay(symbol,startDate);
+    double minPrice = this.priceOfDay(symbol, startDate);
     Calendar tempStart = Calendar.getInstance();
     tempStart.setTime(startDate);
-    double temp = this.priceOfDay(symbol,startDate);
+    double temp = this.priceOfDay(symbol, startDate);
 
     while (tempStart.getTime().before(endDate) || tempStart.getTime().equals(endDate)) {
       try {
-        temp = this.priceOfDay(symbol,tempStart.getTime());
+        temp = this.priceOfDay(symbol, tempStart.getTime());
       } catch (Exception e) {
 
       }
-      if(temp<minPrice) {
+      if (temp < minPrice) {
         minPrice = temp;
       }
       tempStart.add(Calendar.DATE, 1);
     }
     return minPrice;
   }
-
-
 
 
 }

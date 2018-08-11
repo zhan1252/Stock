@@ -7,8 +7,6 @@ import java.util.Date;
 
 import basket.IBasket;
 import basket.IBasketImpl;
-import history.IHistory;
-import history.IHistoryImpl;
 import history.TickerSymbol;
 import model.IStockModel;
 import model.IStockModelImpl;
@@ -45,7 +43,6 @@ public class IStockModelTest {
 
   }
 
-  //changed addIhistory to only take in tickersymbol
 
   /**
    * Test that the priceOfDay method works for Microsoft.
